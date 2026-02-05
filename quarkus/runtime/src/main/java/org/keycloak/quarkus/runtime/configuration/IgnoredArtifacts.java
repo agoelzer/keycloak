@@ -95,6 +95,13 @@ public class IgnoredArtifacts {
             "com.mysql:mysql-connector-j"
     );
 
+    //TODO(agr22)
+    public static final Set<String> JDBC_NUODB = Set.of(
+            "io.quarkus:quarkus-jdbc-mysql",
+            "io.quarkus:quarkus-jdbc-mysql-deployment",
+            "com.mysql:mysql-connector-j"
+    );
+
     public static final Set<String> JDBC_MSSQL = Set.of(
             "io.quarkus:quarkus-jdbc-mssql",
             "io.quarkus:quarkus-jdbc-mssql-deployment",
@@ -114,7 +121,8 @@ public class IgnoredArtifacts {
                     JDBC_MARIADB,
                     JDBC_MYSQL,
                     JDBC_MSSQL,
-                    JDBC_ORACLE
+                    JDBC_ORACLE,
+                    JDBC_NUODB
             )
             .flatMap(Collection::stream)
             .collect(Collectors.toUnmodifiableSet());
@@ -142,6 +150,7 @@ public class IgnoredArtifacts {
                     case POSTGRES -> JDBC_POSTGRES;
                     case MSSQL -> JDBC_MSSQL;
                     case ORACLE -> JDBC_ORACLE;
+                    case NUODB -> JDBC_NUODB;
                 })
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());

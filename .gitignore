@@ -112,3 +112,6 @@ node_modules
 
 # JENV
 .java-version
+
+# NuoDB
+keycloak-999.0.0-SNAPSHOT

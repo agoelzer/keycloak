@@ -166,6 +166,20 @@ public final class Database {
                 "jdbc:mysql://${kc.db-url-host:localhost}:${kc.db-url-port:3306}/${kc.db-url-database:keycloak}${kc.db-url-properties:}",
                 asList("org.keycloak.connections.jpa.updater.liquibase.UpdatedMySqlDatabase")
         ),
+        NUODB("nuodb",
+                "com.nuodb.jdbc.XADataSource",
+                "com.nuodb.jdbc.DataSource",
+                "com.nuodb.hibernate.NuoDBDialect",
+                "jdbc:nuodb://localhost:48004/db1", //"jdbc:com.nuodb.hib://localhost:48004/db1",
+                asList("org.keycloak.connections.jpa.updater.liquibase.UpdatedNuoDBDatabase")
+        ),
+        // NUODB("nuodb",
+        //         "com.nuodb.hibernate.NuoHibernateDriver",
+        //         "com.nuodb.hibernate.NuoHibernateDriver",
+        //         "com.nuodb.hibernate.NuoDBDialect",
+        //         "jdbc:com.nuodb.hib://localhost:48004/db1",
+        //         asList("org.keycloak.connections.jpa.updater.liquibase.UpdatedMySqlDatabase")
+        // ),
         MARIADB("mariadb",
                 "org.mariadb.jdbc.MariaDbDataSource",
                 "org.mariadb.jdbc.Driver",
