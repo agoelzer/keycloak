@@ -36,7 +36,11 @@ public class DropUniqueConstraintGenerator extends AbstractSqlGenerator<DropUniq
     @Override
     public Sql[] generateSql(DropUniqueConstraintStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
         String sql;
-        if (!(database instanceof NuoDBDatabase) && database instanceof MySQLDatabase) {
+        if (database instanceof NuoDBDatabase) {
+            sql = "";
+            //sql += "DROP INDEX " + database.escapeConstraintName(statement.getConstraintName());
+            sql += "ALTER TABLE " + database.escapeTableName(statement.getCatalogName(), statement.getSchemaName(), statement.getTableName()) + " DROP CONSTRAINT " + database.escapeConstraintName(statement.getConstraintName());
+        } else if (!(database instanceof NuoDBDatabase) && database instanceof MySQLDatabase) {
             sql = "ALTER TABLE " + database.escapeTableName(statement.getCatalogName(), statement.getSchemaName(), statement.getTableName()) + " DROP KEY " + database.escapeConstraintName(statement.getConstraintName());
         } else if (database instanceof OracleDatabase) {
             sql = "ALTER TABLE " + database.escapeTableName(statement.getCatalogName(), statement.getSchemaName(), statement.getTableName()) + " DROP CONSTRAINT " + database.escapeConstraintName(statement.getConstraintName()) + " DROP INDEX";

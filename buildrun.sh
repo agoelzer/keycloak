@@ -56,7 +56,7 @@ KC_DB_DRIVER=com.nuodb.jdbc.DataSource \
 KC_DB_URL=jdbc:nuodb://localhost:48004/db1 \
 KC_DB_USERNAME=dba \
 KC_DB_PASSWORD=passw0rd \
-JAVA_OPTS="-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager Dliquibase.sql.logLevel=DEBUG -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005" bin/kc.sh \
+JAVA_OPTS="-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dliquibase.sql.logLevel=DEBUG -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005" bin/kc.sh \
         start-dev --verbose
 popd
 }
